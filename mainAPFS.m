@@ -3,7 +3,6 @@ clear;
 data_name = './data/image.mat';
 load(data_name);
 
-rng(0); 
 partialRate  =1.0;
 feaNoiseRate = 0.3;
 
