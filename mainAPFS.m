@@ -51,6 +51,7 @@ HyperPara.eta=0.001;
 HyperPara.gamma   = 1;
 HyperPara.k_initial = 25; 
 HyperPara.omega = 0.67;
+HyperPara.mu = 1e-3; 
 HyperPara.admm_rho = 1;
 
 [W, A, Distribution] = APFS_PML_Optimization(train_data, PL, HyperPara);
