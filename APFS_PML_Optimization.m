@@ -11,7 +11,7 @@ step_size_D = get_param(HyperPara, 'step_size_D', 1e-4);
 step_size_C = get_param(HyperPara, 'step_size_C', 1e-4);
 step_size_V = get_param(HyperPara, 'step_size_V', 1e-4);
 omega = get_param(HyperPara, 'omega', 0.01);
-mu = get_param(HyperPara, 'mu', 1e-3); 
+prune_threshold = get_param(HyperPara, 'prune_threshold', 1e-4);
 
 
 k = k_initial;
@@ -63,15 +63,12 @@ for iter = 1:maxIter
     end
 
     if k > 0
-    col_norms_after_update = sqrt(sum(P.^2, 1));
-
-   
-    dynamic_tau = mu * mean(col_norms_after_update); 
-    active_indices = find(col_norms_after_update > dynamic_tau);
-
-    if length(active_indices) < k
+        col_norms_after_update = sqrt(sum(P.^2, 1));
+        active_indices = find(col_norms_after_update > prune_threshold);
+        
+        if length(active_indices) < k
             new_k = length(active_indices);
-            fprintf('Pruning prototypes: k changes from %d to %d (tau = %.6e)\n', k, new_k, dynamic_tau);
+            fprintf('Pruning prototypes: k changes from %d to %d\n', k, new_k);
             k = new_k;
             
             P = P(:, active_indices);
