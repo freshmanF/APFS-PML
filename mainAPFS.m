@@ -3,7 +3,8 @@ clear;
 data_name = './data/image.mat';
 load(data_name);
 
-partialRate  =1.0;
+rng(0); 
+partialRate  =1.5;
 feaNoiseRate = 0.3;
 
 evamode = 1; 
@@ -51,7 +52,6 @@ HyperPara.eta=0.001;
 HyperPara.gamma   = 1;
 HyperPara.k_initial = 25; 
 HyperPara.omega = 0.67;
-HyperPara.mu = 1e-3; 
 HyperPara.admm_rho = 1;
 
 [W, A, Distribution] = APFS_PML_Optimization(train_data, PL, HyperPara);
