@@ -12,7 +12,7 @@ HyperPara.ablationx = 0;
 HyperPara.ablationy = 0;
 HyperPara.ablationd = 0;
 
-model_name = 'APFS-PML';
+model_name = 'DPFS-PML';
 
 [train_data, settings]=mapminmax(train_data');
 test_data=mapminmax('apply',test_data',settings);
@@ -54,7 +54,7 @@ HyperPara.k_initial = 25;
 HyperPara.omega = 0.67;
 HyperPara.admm_rho = 1;
 
-[W, A, Distribution] = APFS_PML_Optimization(train_data, PL, HyperPara);
+[W, A, Distribution] = DPFS_PML_Optimization(train_data, PL, HyperPara);
 
 [dumb, index] = sort(sum(W.*W,2),'descend');
 index = index( index <= size(train_data,2) ); 
