@@ -1,4 +1,4 @@
-function [W, A, D, k_final] = APFS_PML_Optimization(X, Y_origin, HyperPara)
+function [W, A, D, k_final] = DPFS_PML_Optimization(X, Y_origin, HyperPara)
 
 alpha = get_param(HyperPara, 'alpha', 1);
 beta  = get_param(HyperPara, 'beta', 0.1);
